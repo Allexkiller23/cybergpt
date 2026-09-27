@@ -3,278 +3,476 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberGPT — Vibe Coding AI</title>
+<title>CyberGPT v5.0 — Ultimate Pro</title>
+<meta name="description" content="Elite AI for vibe coding with streaming, slash commands, and more">
 <script src="https://js.puter.com/v2/"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <style>
 /* ═══════════════════════════════════════════════
-   CSS VARIABLES — THEMES
+   CSS VARIABLES — 9 THEMES
    ═══════════════════════════════════════════════ */
 :root {
   --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* THEME: Cyberpunk (default) */
 [data-theme="cyberpunk"] {
-  --bg: #0a0a0f;
-  --bg-2: #12121a;
-  --bg-3: #1a1a26;
-  --bg-4: #22222e;
-  --accent: #a855f7;
-  --accent-2: #06b6d4;
-  --accent-3: #f472b6;
-  --text: #e4e4e7;
-  --text-dim: #71717a;
-  --border: #27272a;
-  --danger: #ef4444;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --glow: rgba(168, 85, 247, 0.3);
-  --glow-2: rgba(6, 182, 212, 0.3);
-  --card-bg: rgba(18, 18, 26, 0.8);
-  --code-bg: #0d1117;
-  --particle-1: #a855f7;
-  --particle-2: #06b6d4;
-  --particle-3: #f472b6;
+  --bg: #0a0a0f; --bg-2: #12121a; --bg-3: #1a1a26; --bg-4: #22222e;
+  --accent: #a855f7; --accent-2: #06b6d4; --accent-3: #f472b6;
+  --text: #e4e4e7; --text-dim: #71717a; --border: #27272a;
+  --danger: #ef4444; --success: #10b981; --warning: #f59e0b;
+  --glow: rgba(168, 85, 247, 0.4); --glow-2: rgba(6, 182, 212, 0.4);
+  --card-bg: rgba(18, 18, 26, 0.7); --code-bg: #0d1117;
+  --grad-1: #a855f7; --grad-2: #06b6d4; --grad-3: #f472b6;
 }
-
-/* THEME: Neon */
 [data-theme="neon"] {
-  --bg: #050510;
-  --bg-2: #0a0a20;
-  --bg-3: #101030;
-  --bg-4: #181840;
-  --accent: #00ff88;
-  --accent-2: #ff0080;
-  --accent-3: #00d4ff;
-  --text: #e0e0ff;
-  --text-dim: #6060a0;
-  --border: #1a1a40;
-  --danger: #ff3355;
-  --success: #00ff88;
-  --warning: #ffaa00;
-  --glow: rgba(0, 255, 136, 0.3);
-  --glow-2: rgba(255, 0, 128, 0.3);
-  --card-bg: rgba(10, 10, 32, 0.8);
-  --code-bg: #060618;
-  --particle-1: #00ff88;
-  --particle-2: #ff0080;
-  --particle-3: #00d4ff;
+  --bg: #050510; --bg-2: #0a0a20; --bg-3: #101030; --bg-4: #181840;
+  --accent: #00ff88; --accent-2: #ff0080; --accent-3: #00d4ff;
+  --text: #e0e0ff; --text-dim: #6060a0; --border: #1a1a40;
+  --danger: #ff3355; --success: #00ff88; --warning: #ffaa00;
+  --glow: rgba(0, 255, 136, 0.4); --glow-2: rgba(255, 0, 128, 0.4);
+  --card-bg: rgba(10, 10, 32, 0.7); --code-bg: #060618;
+  --grad-1: #00ff88; --grad-2: #ff0080; --grad-3: #00d4ff;
 }
-
-/* THEME: Ocean */
 [data-theme="ocean"] {
-  --bg: #030b1a;
-  --bg-2: #061428;
-  --bg-3: #0a1e3d;
-  --bg-4: #0e2850;
-  --accent: #38bdf8;
-  --accent-2: #2dd4bf;
-  --accent-3: #818cf8;
-  --text: #e0f2fe;
-  --text-dim: #5b8ab5;
-  --border: #0c2d4d;
-  --danger: #f87171;
-  --success: #34d399;
-  --warning: #fbbf24;
-  --glow: rgba(56, 189, 248, 0.3);
-  --glow-2: rgba(45, 212, 191, 0.3);
-  --card-bg: rgba(6, 20, 40, 0.8);
-  --code-bg: #020810;
-  --particle-1: #38bdf8;
-  --particle-2: #2dd4bf;
-  --particle-3: #818cf8;
+  --bg: #030b1a; --bg-2: #061428; --bg-3: #0a1e3d; --bg-4: #0e2850;
+  --accent: #38bdf8; --accent-2: #2dd4bf; --accent-3: #818cf8;
+  --text: #e0f2fe; --text-dim: #5b8ab5; --border: #0c2d4d;
+  --danger: #f87171; --success: #34d399; --warning: #fbbf24;
+  --glow: rgba(56, 189, 248, 0.4); --glow-2: rgba(45, 212, 191, 0.4);
+  --card-bg: rgba(6, 20, 40, 0.7); --code-bg: #020810;
+  --grad-1: #38bdf8; --grad-2: #2dd4bf; --grad-3: #818cf8;
 }
-
-/* THEME: Sunset */
 [data-theme="sunset"] {
-  --bg: #1a0a0a;
-  --bg-2: #2a1010;
-  --bg-3: #3a1818;
-  --bg-4: #4a2020;
-  --accent: #f97316;
-  --accent-2: #ef4444;
-  --accent-3: #eab308;
-  --text: #fef3c7;
-  --text-dim: #a08060;
-  --border: #4a2525;
-  --danger: #ef4444;
-  --success: #22c55e;
-  --warning: #eab308;
-  --glow: rgba(249, 115, 22, 0.3);
-  --glow-2: rgba(234, 179, 8, 0.3);
-  --card-bg: rgba(42, 16, 16, 0.8);
-  --code-bg: #120808;
-  --particle-1: #f97316;
-  --particle-2: #ef4444;
-  --particle-3: #eab308;
+  --bg: #1a0a0a; --bg-2: #2a1010; --bg-3: #3a1818; --bg-4: #4a2020;
+  --accent: #f97316; --accent-2: #ef4444; --accent-3: #eab308;
+  --text: #fef3c7; --text-dim: #a08060; --border: #4a2525;
+  --danger: #ef4444; --success: #22c55e; --warning: #eab308;
+  --glow: rgba(249, 115, 22, 0.4); --glow-2: rgba(234, 179, 8, 0.4);
+  --card-bg: rgba(42, 16, 16, 0.7); --code-bg: #120808;
+  --grad-1: #f97316; --grad-2: #ef4444; --grad-3: #eab308;
 }
-
-/* THEME: Forest */
 [data-theme="forest"] {
-  --bg: #050f05;
-  --bg-2: #0a1a0a;
-  --bg-3: #102510;
-  --bg-4: #183018;
-  --accent: #22c55e;
-  --accent-2: #84cc16;
-  --accent-3: #14b8a6;
-  --text: #dcfce7;
-  --text-dim: #5a8a5a;
-  --border: #1a3a1a;
-  --danger: #ef4444;
-  --success: #22c55e;
-  --warning: #eab308;
-  --glow: rgba(34, 197, 94, 0.3);
-  --glow-2: rgba(132, 204, 22, 0.3);
-  --card-bg: rgba(10, 26, 10, 0.8);
-  --code-bg: #030a03;
-  --particle-1: #22c55e;
-  --particle-2: #84cc16;
-  --particle-3: #14b8a6;
+  --bg: #050f05; --bg-2: #0a1a0a; --bg-3: #102510; --bg-4: #183018;
+  --accent: #22c55e; --accent-2: #84cc16; --accent-3: #14b8a6;
+  --text: #dcfce7; --text-dim: #5a8a5a; --border: #1a3a1a;
+  --danger: #ef4444; --success: #22c55e; --warning: #eab308;
+  --glow: rgba(34, 197, 94, 0.4); --glow-2: rgba(132, 204, 22, 0.4);
+  --card-bg: rgba(10, 26, 10, 0.7); --code-bg: #030a03;
+  --grad-1: #22c55e; --grad-2: #84cc16; --grad-3: #14b8a6;
 }
-
-/* THEME: Light */
 [data-theme="light"] {
-  --bg: #f8fafc;
-  --bg-2: #ffffff;
-  --bg-3: #f1f5f9;
-  --bg-4: #e2e8f0;
-  --accent: #7c3aed;
-  --accent-2: #0891b2;
-  --accent-3: #db2777;
-  --text: #1e293b;
-  --text-dim: #64748b;
-  --border: #cbd5e1;
-  --danger: #dc2626;
-  --success: #16a34a;
-  --warning: #d97706;
-  --glow: rgba(124, 58, 237, 0.15);
-  --glow-2: rgba(8, 145, 178, 0.15);
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --code-bg: #1e293b;
-  --particle-1: #7c3aed;
-  --particle-2: #0891b2;
-  --particle-3: #db2777;
+  --bg: #f8fafc; --bg-2: #ffffff; --bg-3: #f1f5f9; --bg-4: #e2e8f0;
+  --accent: #7c3aed; --accent-2: #0891b2; --accent-3: #db2777;
+  --text: #1e293b; --text-dim: #64748b; --border: #cbd5e1;
+  --danger: #dc2626; --success: #16a34a; --warning: #d97706;
+  --glow: rgba(124, 58, 237, 0.2); --glow-2: rgba(8, 145, 178, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.85); --code-bg: #1e293b;
+  --grad-1: #7c3aed; --grad-2: #0891b2; --grad-3: #db2777;
 }
-
-/* THEME: AMOLED */
 [data-theme="amoled"] {
-  --bg: #000000;
-  --bg-2: #0a0a0a;
-  --bg-3: #111111;
-  --bg-4: #1a1a1a;
-  --accent: #ffffff;
-  --accent-2: #888888;
-  --accent-3: #aaaaaa;
-  --text: #e0e0e0;
-  --text-dim: #555555;
-  --border: #222222;
-  --danger: #ff4444;
-  --success: #44ff44;
-  --warning: #ffaa00;
-  --glow: rgba(255, 255, 255, 0.1);
-  --glow-2: rgba(136, 136, 136, 0.1);
-  --card-bg: rgba(10, 10, 10, 0.9);
-  --code-bg: #050505;
-  --particle-1: #ffffff;
-  --particle-2: #888888;
-  --particle-3: #555555;
+  --bg: #000000; --bg-2: #0a0a0a; --bg-3: #111111; --bg-4: #1a1a1a;
+  --accent: #ffffff; --accent-2: #888888; --accent-3: #aaaaaa;
+  --text: #e0e0e0; --text-dim: #555555; --border: #222222;
+  --danger: #ff4444; --success: #44ff44; --warning: #ffaa00;
+  --glow: rgba(255, 255, 255, 0.15); --glow-2: rgba(136, 136, 136, 0.15);
+  --card-bg: rgba(10, 10, 10, 0.9); --code-bg: #050505;
+  --grad-1: #ffffff; --grad-2: #888888; --grad-3: #555555;
+}
+[data-theme="galaxy"] {
+  --bg: #0f0524; --bg-2: #1a0a3e; --bg-3: #251058; --bg-4: #301872;
+  --accent: #c084fc; --accent-2: #f472b6; --accent-3: #60a5fa;
+  --text: #f3e8ff; --text-dim: #a78bfa; --border: #3b1d7a;
+  --danger: #f87171; --success: #34d399; --warning: #fbbf24;
+  --glow: rgba(192, 132, 252, 0.4); --glow-2: rgba(244, 114, 182, 0.4);
+  --card-bg: rgba(26, 10, 62, 0.7); --code-bg: #0a0318;
+  --grad-1: #c084fc; --grad-2: #f472b6; --grad-3: #60a5fa;
+}
+[data-theme="retro"] {
+  --bg: #1a1a2e; --bg-2: #16213e; --bg-3: #0f3460; --bg-4: #1a4d7e;
+  --accent: #e94560; --accent-2: #f39c12; --accent-3: #00d2d3;
+  --text: #f5f5f5; --text-dim: #a0a0b0; --border: #2a2a4e;
+  --danger: #e94560; --success: #00d2d3; --warning: #f39c12;
+  --glow: rgba(233, 69, 96, 0.4); --glow-2: rgba(243, 156, 18, 0.4);
+  --card-bg: rgba(22, 33, 62, 0.7); --code-bg: #0f0f1e;
+  --grad-1: #e94560; --grad-2: #f39c12; --grad-3: #00d2d3;
+}
+[data-theme="minimal"] {
+  --bg: #fafafa; --bg-2: #ffffff; --bg-3: #f5f5f5; --bg-4: #e5e5e5;
+  --accent: #000000; --accent-2: #555555; --accent-3: #888888;
+  --text: #1a1a1a; --text-dim: #666666; --border: #e0e0e0;
+  --danger: #dc2626; --success: #16a34a; --warning: #d97706;
+  --glow: rgba(0, 0, 0, 0.1); --glow-2: rgba(85, 85, 85, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.9); --code-bg: #f8f8f8;
+  --grad-1: #000000; --grad-2: #555555; --grad-3: #888888;
 }
 
-/* ═══════════════════════════════════════════════
-   BASE STYLES
-   ═══════════════════════════════════════════════ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+  height: 100%; width: 100%; overflow: hidden;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   display: flex;
-  flex-direction: column;
   transition: background var(--transition), color var(--transition);
+  position: relative;
 }
 
 /* ═══════════════════════════════════════════════
-   PARTICLES BACKGROUND
+   ANIMATED BACKGROUND
    ═══════════════════════════════════════════════ */
-#particles-canvas {
-  position: fixed;
-  top: 0; left: 0;
+.mesh-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+
+.mesh-bg::before, .mesh-bg::after {
+  content: '';
+  position: absolute;
+  width: 60vmax; height: 60vmax;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.3;
+  animation: meshFloat 25s ease-in-out infinite;
+}
+
+.mesh-bg::before {
+  background: var(--grad-1);
+  top: -20%; left: -10%;
+}
+
+.mesh-bg::after {
+  background: var(--grad-2);
+  bottom: -20%; right: -10%;
+  animation-delay: -12s;
+}
+
+.mesh-bg .blob3 {
+  position: absolute;
+  width: 50vmax; height: 50vmax;
+  border-radius: 50%;
+  background: var(--grad-3);
+  filter: blur(120px);
+  opacity: 0.2;
+  top: 40%; left: 40%;
+  animation: meshFloat 30s ease-in-out infinite -8s;
+}
+
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(10vw, -10vh) scale(1.1) rotate(120deg); }
+  66% { transform: translate(-10vw, 10vh) scale(0.9) rotate(240deg); }
+}
+
+#matrix-canvas {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.06;
+}
+
+/* Custom cursor */
+.cursor-dot, .cursor-ring {
+  position: fixed; pointer-events: none; z-index: 9999;
+  border-radius: 50%;
+  transition: transform 0.1s ease-out;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+  width: 32px; height: 32px;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease-out;
+}
+
+.cursor-ring.hover {
+  width: 50px; height: 50px;
+  border-color: var(--accent-2);
+  background: rgba(168, 85, 247, 0.1);
+}
+
+@media (max-width: 768px), (hover: none) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════════ */
+.app {
+  display: flex;
   width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.4;
+  position: relative;
+  z-index: 1;
 }
 
-/* ═══════════════════════════════════════════════
-   HEADER
-   ═══════════════════════════════════════════════ */
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: transform var(--transition), width var(--transition);
+  z-index: 20;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  transform: translateX(-100%);
+}
+
+.sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.new-chat-btn {
+  flex: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px var(--glow);
+}
+
+.new-chat-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 25px var(--glow);
+}
+
+.clear-history-btn {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+
+.clear-history-btn:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.search-box {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-input {
+  width: 100%;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+}
+
+.chat-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.chat-list::-webkit-scrollbar { width: 4px; }
+.chat-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.chat-item {
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.chat-item:hover {
+  background: var(--bg-3);
+}
+
+.chat-item.active {
+  background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(6,182,212,0.1));
+  border: 1px solid rgba(168,85,247,0.3);
+}
+
+.chat-item .delete-chat {
+  position: absolute;
+  right: 8px;
+  opacity: 0;
+  background: var(--danger);
+  color: white;
+  border: none;
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: opacity 0.2s;
+}
+
+.chat-item:hover .delete-chat { opacity: 1; }
+
+.sidebar-footer {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-btn {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.sidebar-btn:hover {
+  border-color: var(--accent);
+  background: var(--bg-4);
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
+  padding: 10px 20px;
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
   z-index: 10;
-  position: relative;
-  transition: background var(--transition), border-color var(--transition);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggle-sidebar-btn {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+
+.toggle-sidebar-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 22px;
+  gap: 10px;
+  font-size: 20px;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradShift 5s ease infinite;
   letter-spacing: -0.5px;
 }
 
-.logo-icon {
-  width: 40px; height: 40px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  color: white; font-size: 20px;
-  -webkit-text-fill-color: white;
-  box-shadow: 0 0 25px var(--glow), 0 4px 15px rgba(0,0,0,0.3);
-  animation: logoPulse 3s ease-in-out infinite;
-  position: relative;
+@keyframes gradShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-.logo-icon::after {
+.logo-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 18px;
+  -webkit-text-fill-color: white;
+  box-shadow: 0 0 20px var(--glow);
+  position: relative;
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+.logo-icon::before {
   content: '';
   position: absolute;
-  inset: -3px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+  inset: -2px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+  background-size: 200% 200%;
+  animation: gradShift 3s ease infinite;
   z-index: -1;
-  opacity: 0.5;
   filter: blur(8px);
-  animation: logoPulse 3s ease-in-out infinite reverse;
+  opacity: 0.6;
 }
 
 @keyframes logoPulse {
-  0%, 100% { box-shadow: 0 0 25px var(--glow), 0 4px 15px rgba(0,0,0,0.3); }
-  50% { box-shadow: 0 0 40px var(--glow-2), 0 4px 20px rgba(0,0,0,0.4); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
-.header-actions {
+.header-right {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 
@@ -307,20 +505,19 @@ header {
   background: var(--bg-3);
   color: var(--text);
   border: 1px solid var(--border);
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: 12px;
   transition: all 0.2s;
 }
 
 .header-btn:hover {
   border-color: var(--accent);
-  background: var(--bg-4);
   box-shadow: 0 0 15px var(--glow);
 }
 
@@ -328,23 +525,22 @@ header {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: white;
   border: none;
+  box-shadow: 0 4px 15px var(--glow);
 }
 
 .header-btn.primary:hover {
-  box-shadow: 0 4px 20px var(--glow);
   transform: translateY(-1px);
+  box-shadow: 0 6px 25px var(--glow);
 }
 
-/* ═══════════════════════════════════════════════
-   CHAT
-   ═══════════════════════════════════════════════ */
+/* CHAT */
 .chat-container {
   flex: 1 1 auto;
   overflow-y: auto;
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   min-height: 0;
   position: relative;
   z-index: 1;
@@ -357,8 +553,9 @@ header {
 .message {
   display: flex;
   gap: 12px;
-  max-width: 88%;
-  animation: msgIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 85%;
+  animation: msgIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 @keyframes msgIn {
@@ -375,6 +572,7 @@ header {
   font-weight: 700;
   flex-shrink: 0;
   font-size: 16px;
+  position: relative;
 }
 
 .message.ai .avatar {
@@ -389,6 +587,14 @@ header {
   color: var(--text-dim);
 }
 
+.bubble-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+}
+
 .bubble {
   padding: 14px 18px;
   border-radius: 18px;
@@ -397,11 +603,12 @@ header {
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 14.5px;
+  position: relative;
 }
 
 .message.ai .bubble {
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   border: 1px solid var(--border);
   border-top-left-radius: 4px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
@@ -414,6 +621,28 @@ header {
   box-shadow: 0 4px 20px var(--glow);
 }
 
+.bubble h1, .bubble h2, .bubble h3 {
+  margin: 12px 0 8px 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.bubble h1 { font-size: 1.4em; }
+.bubble h2 { font-size: 1.25em; }
+.bubble h3 { font-size: 1.1em; }
+.bubble strong { font-weight: 700; color: var(--accent); }
+.message.user .bubble strong { color: white; }
+.bubble em { font-style: italic; }
+.bubble ul, .bubble ol { margin: 8px 0; padding-left: 24px; }
+.bubble li { margin: 4px 0; }
+.bubble a { color: var(--accent-2); text-decoration: underline; }
+.bubble blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+  margin: 8px 0;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
 .bubble code {
   background: rgba(0,0,0,0.3);
   padding: 2px 7px;
@@ -422,9 +651,8 @@ header {
   font-size: 0.88em;
 }
 
-[data-theme="light"] .bubble code {
-  background: rgba(0,0,0,0.08);
-}
+[data-theme="light"] .bubble code,
+[data-theme="minimal"] .bubble code { background: rgba(0,0,0,0.08); }
 
 .code-block {
   background: var(--code-bg);
@@ -446,18 +674,20 @@ header {
   color: var(--text-dim);
 }
 
-.copy-btn {
+.code-actions { display: flex; gap: 6px; }
+
+.copy-btn, .run-btn {
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-dim);
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 11px;
   transition: all 0.2s;
 }
 
-.copy-btn:hover {
+.copy-btn:hover, .run-btn:hover {
   background: var(--accent);
   color: white;
   border-color: var(--accent);
@@ -471,6 +701,53 @@ header {
   line-height: 1.6;
   color: #e6edf3;
   white-space: pre;
+}
+
+.code-content code {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.msg-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.message:hover .msg-actions { opacity: 1; }
+
+.msg-action-btn {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.msg-action-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.msg-action-btn.liked { color: var(--success); border-color: var(--success); }
+.msg-action-btn.disliked { color: var(--danger); border-color: var(--danger); }
+
+.model-badge {
+  font-size: 10px;
+  color: var(--text-dim);
+  padding: 2px 8px;
+  background: var(--bg-3);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
 }
 
 .typing { display: inline-flex; gap: 5px; padding: 4px 0; }
@@ -489,32 +766,37 @@ header {
   30% { opacity: 1; transform: scale(1.3) translateY(-4px); }
 }
 
-/* WELCOME */
 .welcome {
   text-align: center;
-  padding: 50px 20px;
+  padding: 40px 20px;
   color: var(--text-dim);
+  margin: auto;
+  max-width: 700px;
 }
 
 .welcome-icon {
-  font-size: 64px;
+  font-size: 72px;
   margin-bottom: 16px;
   animation: float 3s ease-in-out infinite;
+  display: inline-block;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(5deg); }
 }
 
 .welcome h2 {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+  background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 8px;
+  animation: gradShift 5s ease infinite;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
 }
 
 .welcome p {
@@ -524,24 +806,55 @@ header {
   line-height: 1.6;
 }
 
-.suggestions {
-  display: flex;
-  flex-wrap: wrap;
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
-  justify-content: center;
-  margin-top: 28px;
+  margin: 24px 0;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 14px;
+  text-align: left;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.feature-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px var(--glow);
+}
+
+.feature-card .icon { font-size: 24px; margin-bottom: 6px; }
+.feature-card .title { font-weight: 600; font-size: 13px; color: var(--text); margin-bottom: 2px; }
+.feature-card .desc { font-size: 11px; color: var(--text-dim); }
+
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .suggestion {
   background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
-  padding: 12px 18px;
+  padding: 14px 16px;
   border-radius: 14px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   transition: all 0.25s;
   color: var(--text);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .suggestion:hover {
@@ -551,18 +864,20 @@ header {
   transform: translateY(-2px);
 }
 
-/* ═══════════════════════════════════════════════
-   INPUT AREA
-   ═══════════════════════════════════════════════ */
+.suggestion .sug-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* INPUT */
 .input-area {
-  padding: 14px 24px 20px;
+  padding: 12px 20px 18px;
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
   flex-shrink: 0;
   position: relative;
   z-index: 10;
-  transition: background var(--transition), border-color var(--transition);
 }
 
 .input-wrapper {
@@ -573,6 +888,7 @@ header {
   border-radius: 18px;
   padding: 10px;
   transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
 }
 
 .input-wrapper:focus-within {
@@ -700,6 +1016,20 @@ header {
 
 #userInput::placeholder { color: var(--text-dim); }
 
+.input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 4px 0;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.char-counter {
+  display: flex;
+  gap: 10px;
+}
+
 .icon-btn {
   width: 42px; height: 42px;
   border-radius: 12px;
@@ -745,8 +1075,8 @@ header {
   box-shadow: 0 4px 15px var(--glow);
 }
 
-.send-btn:hover { transform: scale(1.08); box-shadow: 0 6px 25px var(--glow); }
-.send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+.send-btn:hover:not(:disabled) { transform: scale(1.08); box-shadow: 0 6px 25px var(--glow); }
+.send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .voice-status {
   display: none;
@@ -769,17 +1099,13 @@ header {
   animation: blink 1s infinite;
 }
 
-/* ═══════════════════════════════════════════════
-   MODAL
-   ═══════════════════════════════════════════════ */
+/* MODAL */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   display: none;
-  align-items: center;
-  justify-content: center;
+  align-items: center; justify-content: center;
   z-index: 100;
 }
 
@@ -880,16 +1206,53 @@ header {
   line-height: 1.6;
 }
 
-.info-box h3 {
-  color: var(--accent);
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
+.info-box h3 { color: var(--accent); margin-bottom: 8px; font-size: 14px; }
 .info-box ul { padding-left: 20px; margin: 8px 0; }
 .info-box li { margin-bottom: 4px; }
 
-/* ERROR BANNER */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 12px 16px;
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 13px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast.success { border-left-color: var(--success); }
+.toast.error { border-left-color: var(--danger); }
+.toast.warning { border-left-color: var(--warning); }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.toast.out {
+  animation: toastOut 0.3s forwards;
+}
+
+@keyframes toastOut {
+  to { opacity: 0; transform: translateX(50px); }
+}
+
 .error-banner {
   background: rgba(239, 68, 68, 0.1);
   border-bottom: 1px solid var(--danger);
@@ -899,109 +1262,220 @@ header {
   font-size: 13px;
   display: none;
   flex-shrink: 0;
+  z-index: 5;
 }
 
 .error-banner.active { display: block; }
 
-/* ═══════════════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════════════ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.shortcuts-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.shortcut-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--bg-3);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+kbd {
+  background: var(--bg-4);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 11px;
+  box-shadow: 0 2px 0 var(--border);
+}
+
+.settings-group {
+  margin-bottom: 20px;
+}
+
+.settings-group label {
+  display: block;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.settings-group input[type="range"] {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.settings-group .value-display {
+  display: inline-block;
+  margin-left: 10px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 50;
+    box-shadow: 10px 0 40px rgba(0,0,0,0.5);
+  }
+  .sidebar.collapsed { transform: translateX(-100%); }
+}
+
 @media (max-width: 600px) {
-  header { padding: 10px 14px; }
-  .logo { font-size: 17px; }
-  .logo-icon { width: 34px; height: 34px; font-size: 16px; }
-  .header-btn { padding: 6px 10px; font-size: 12px; }
-  .header-btn span.btn-text { display: none; }
+  header { padding: 8px 12px; }
+  .logo { font-size: 16px; }
+  .logo-icon { width: 32px; height: 32px; font-size: 15px; }
+  .header-btn { padding: 6px 10px; font-size: 11px; }
+  .header-btn .btn-text { display: none; }
   .status-indicator span:not(.status-dot) { display: none; }
-  .chat-container { padding: 14px; }
+  .chat-container { padding: 12px; }
   .message { max-width: 95%; }
-  .input-area { padding: 10px 14px 14px; }
+  .input-area { padding: 8px 12px 12px; }
   .select-btn span:not(.arrow) { display: none; }
   .dropdown { min-width: 210px; }
-  .welcome h2 { font-size: 26px; }
-  .welcome-icon { font-size: 48px; }
-  .suggestion { padding: 10px 14px; font-size: 13px; }
+  .welcome h2 { font-size: 28px; }
+  .welcome-icon { font-size: 52px; }
+  .suggestion { padding: 10px 12px; font-size: 12px; }
+  .feature-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body data-theme="cyberpunk">
 
-<canvas id="particles-canvas"></canvas>
+<div class="mesh-bg"><div class="blob3"></div></div>
+<canvas id="matrix-canvas"></canvas>
 
-<div class="error-banner" id="errorBanner">
-  ⚠️ Puter.js failed to load. Check your internet and refresh (F5).
-</div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-<header>
-  <div class="logo">
-    <div class="logo-icon">⚡</div>
-    CyberGPT
-  </div>
-  <div class="header-actions">
-    <div class="status-indicator">
-      <div class="status-dot"></div>
-      <span data-i18n="status">AI Online</span>
+<div class="error-banner" id="errorBanner">⚠️ Puter.js not loaded. Check internet & refresh (F5).</div>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button class="new-chat-btn" onclick="newChat()">✨ <span data-i18n="new_chat">New Chat</span></button>
+      <button class="clear-history-btn" onclick="clearAllHistory()" title="Clear all">🗑️</button>
     </div>
-    <button class="header-btn" onclick="openModal('themeModal')">🎨 <span class="btn-text" data-i18n="theme">Theme</span></button>
-    <button class="header-btn primary" onclick="openModal('downloadModal')">⬇ <span class="btn-text" data-i18n="download">Download</span></button>
-  </div>
-</header>
-
-<div class="chat-container" id="chat">
-  <div class="welcome">
-    <div class="welcome-icon">🧠</div>
-    <h2 data-i18n="welcome_title">Welcome to CyberGPT</h2>
-    <p data-i18n="welcome_desc">Neural network for vibe coding. Writes code of any length, no limits.</p>
-    <div class="suggestions">
-      <div class="suggestion" onclick="useSuggestion(this)" data-i18n="sug1">Write a game in Python</div>
-      <div class="suggestion" onclick="useSuggestion(this)" data-i18n="sug2">Create a Telegram bot</div>
-      <div class="suggestion" onclick="useSuggestion(this)" data-i18n="sug3">Build a website in HTML/CSS</div>
-      <div class="suggestion" onclick="useSuggestion(this)" data-i18n="sug4">Explain async/await</div>
-      <div class="suggestion" onclick="useSuggestion(this)" data-i18n="sug5">Make a calculator in JS</div>
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="🔍 Search chats..." oninput="searchChats(this.value)">
     </div>
-  </div>
-</div>
+    <div class="chat-list" id="chatList"></div>
+    <div class="sidebar-footer">
+      <button class="sidebar-btn" onclick="exportHistory()">💾 <span data-i18n="export">Export</span></button>
+      <button class="sidebar-btn" onclick="importHistoryClick()">📥 <span data-i18n="import">Import</span></button>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importHistory(event)">
+      <button class="sidebar-btn" onclick="openModal('shortcutsModal')">⌨️ <span data-i18n="shortcuts">Shortcuts</span></button>
+      <button class="sidebar-btn" onclick="openModal('statsModal')">📊 <span data-i18n="stats">Stats</span></button>
+      <button class="sidebar-btn" onclick="openModal('settingsModal')">⚙️ <span data-i18n="settings">Settings</span></button>
+    </div>
+  </aside>
 
-<div class="input-area">
-  <div class="input-wrapper">
-    <div class="toolbar">
-      <div class="toolbar-left">
-        <div class="select-wrapper" id="modelSelect">
-          <button class="select-btn" onclick="toggleDropdown(event, 'modelSelect')">
-            <span id="currentModelIcon">🤖</span>
-            <span id="currentModelName">GPT-4o-mini</span>
-            <span class="arrow">▼</span>
-          </button>
-          <div class="dropdown" id="modelDropdown"></div>
-        </div>
-        <div class="select-wrapper" id="langSelect">
-          <button class="select-btn" onclick="toggleDropdown(event, 'langSelect')">
-            <span id="currentLangIcon">✨</span>
-            <span id="currentLangName" data-i18n="auto">Auto</span>
-            <span class="arrow">▼</span>
-          </button>
-          <div class="dropdown" id="langDropdown"></div>
-        </div>
-        <div class="select-wrapper" id="uiLangSelect">
-          <button class="select-btn" onclick="toggleDropdown(event, 'uiLangSelect')">
-            <span id="currentUiLangIcon">🇷🇺</span>
-            <span id="currentUiLangName">Русский</span>
-            <span class="arrow">▼</span>
-          </button>
-          <div class="dropdown" id="uiLangDropdown"></div>
+  <div class="main">
+    <header>
+      <div class="header-left">
+        <button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
+        <div class="logo">
+          <div class="logo-icon">⚡</div>
+          CyberGPT
         </div>
       </div>
-      <div class="toolbar-right">
-        <div class="voice-status" id="voiceStatus">
-          <span class="voice-dot"></span>
-          <span data-i18n="listening">Listening...</span>
+      <div class="header-right">
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span data-i18n="status">AI Online</span>
+        </div>
+        <button class="header-btn" onclick="openModal('themeModal')">🎨 <span class="btn-text" data-i18n="theme">Theme</span></button>
+        <button class="header-btn primary" onclick="openModal('downloadModal')">⬇ <span class="btn-text" data-i18n="download">Download</span></button>
+      </div>
+    </header>
+
+    <div class="chat-container" id="chat"></div>
+
+    <div class="input-area">
+      <div class="input-wrapper">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <div class="select-wrapper" id="modelSelect">
+              <button class="select-btn" onclick="toggleDropdown(event, 'modelSelect')">
+                <span id="currentModelIcon">🤖</span>
+                <span id="currentModelName">GPT-4o-mini</span>
+                <span class="arrow">▼</span>
+              </button>
+              <div class="dropdown" id="modelDropdown"></div>
+            </div>
+            <div class="select-wrapper" id="langSelect">
+              <button class="select-btn" onclick="toggleDropdown(event, 'langSelect')">
+                <span id="currentLangIcon">✨</span>
+                <span id="currentLangName">Auto</span>
+                <span class="arrow">▼</span>
+              </button>
+              <div class="dropdown" id="langDropdown"></div>
+            </div>
+            <div class="select-wrapper" id="uiLangSelect">
+              <button class="select-btn" onclick="toggleDropdown(event, 'uiLangSelect')">
+                <span id="currentUiLangIcon">🇷🇺</span>
+                <span id="currentUiLangName">Русский</span>
+                <span class="arrow">▼</span>
+              </button>
+              <div class="dropdown" id="uiLangDropdown"></div>
+            </div>
+          </div>
+          <div class="toolbar-right">
+            <div class="voice-status" id="voiceStatus">
+              <span class="voice-dot"></span>
+              <span data-i18n="listening">Listening...</span>
+            </div>
+          </div>
+        </div>
+        <div class="input-row">
+          <textarea id="userInput" data-i18n-placeholder="placeholder" placeholder="Ask CyberGPT anything... (try /help)" rows="1"></textarea>
+          <button class="icon-btn mic-btn" id="micBtn" onclick="toggleVoice()" title="Voice input">🎤</button>
+          <button class="icon-btn send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+        </div>
+        <div class="input-footer">
+          <div class="char-counter">
+            <span><span id="charCount">0</span> chars</span>
+            <span>•</span>
+            <span>Press <kbd>Enter</kbd> to send, <kbd>Shift+Enter</kbd> for newline</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="input-row">
-      <textarea id="userInput" data-i18n-placeholder="placeholder" placeholder="Ask CyberGPT anything..." rows="1"></textarea>
-      <button class="icon-btn mic-btn" id="micBtn" onclick="toggleVoice()" title="Voice input">🎤</button>
-      <button class="icon-btn send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
     </div>
   </div>
 </div>
@@ -1043,75 +1517,128 @@ header {
   </div>
 </div>
 
+<!-- SHORTCUTS MODAL -->
+<div class="modal-overlay" id="shortcutsModal">
+  <div class="modal">
+    <button class="close-modal" onclick="closeModal('shortcutsModal')">✕</button>
+    <h2>⌨️ Keyboard Shortcuts</h2>
+    <div class="shortcuts-list">
+      <div class="shortcut-item"><span>Send message</span><span><kbd>Enter</kbd></span></div>
+      <div class="shortcut-item"><span>New line</span><span><kbd>Shift</kbd> + <kbd>Enter</kbd></span></div>
+      <div class="shortcut-item"><span>New chat</span><span><kbd>Ctrl</kbd> + <kbd>N</kbd></span></div>
+      <div class="shortcut-item"><span>Clear current chat</span><span><kbd>Ctrl</kbd> + <kbd>K</kbd></span></div>
+      <div class="shortcut-item"><span>Toggle sidebar</span><span><kbd>Ctrl</kbd> + <kbd>B</kbd></span></div>
+      <div class="shortcut-item"><span>Focus input</span><span><kbd>Ctrl</kbd> + <kbd>/</kbd></span></div>
+      <div class="shortcut-item"><span>Close modal</span><span><kbd>Esc</kbd></span></div>
+      <div class="shortcut-item"><span>Slash commands</span><span><kbd>/</kbd> help, clear, model, theme</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS MODAL -->
+<div class="modal-overlay" id="statsModal">
+  <div class="modal">
+    <button class="close-modal" onclick="closeModal('statsModal')">✕</button>
+    <h2>📊 Your Statistics</h2>
+    <div class="stats-grid" id="statsGrid"></div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal">
+    <button class="close-modal" onclick="closeModal('settingsModal')">✕</button>
+    <h2>⚙️ Settings</h2>
+    <div class="settings-group">
+      <label>Temperature: <span class="value-display" id="tempValue">0.3</span></label>
+      <input type="range" id="tempSlider" min="0" max="1" step="0.1" value="0.3" oninput="updateTemp(this.value)">
+      <p style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Lower = more focused, Higher = more creative</p>
+    </div>
+    <div class="settings-group">
+      <label>
+        <input type="checkbox" id="streamToggle" onchange="toggleStream(this.checked)" checked>
+        Enable streaming (typewriter effect)
+      </label>
+    </div>
+    <div class="settings-group">
+      <label>
+        <input type="checkbox" id="soundToggle" onchange="toggleSound(this.checked)">
+        Enable sound notifications
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
 <script>
-// ═══════════════════════════════════════════════
-// PARTICLES
-// ═══════════════════════════════════════════════
-const canvas = document.getElementById('particles-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+// Matrix rain
+const matrixCanvas = document.getElementById('matrix-canvas');
+const mctx = matrixCanvas.getContext('2d');
+function resizeMatrix() {
+  matrixCanvas.width = window.innerWidth;
+  matrixCanvas.height = window.innerHeight;
 }
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+resizeMatrix();
+window.addEventListener('resize', resizeMatrix);
 
-function createParticles() {
-  particles = [];
-  const count = Math.min(60, Math.floor(window.innerWidth / 25));
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      r: Math.random() * 2 + 1,
-      color: ['var(--particle-1)', 'var(--particle-2)', 'var(--particle-3)'][Math.floor(Math.random() * 3)]
-    });
+const chars = '01アイウエオカキクケコ{}[]<>=+-*/\\|;:,.?!@#$%^&*()';
+const fontSize = 14;
+let columns = Math.floor(matrixCanvas.width / fontSize);
+let drops = Array(columns).fill(1);
+
+function drawMatrix() {
+  mctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  mctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+  const style = getComputedStyle(document.body);
+  mctx.fillStyle = style.getPropertyValue('--accent').trim() || '#a855f7';
+  mctx.font = fontSize + 'px monospace';
+  for (let i = 0; i < drops.length; i++) {
+    const text = chars[Math.floor(Math.random() * chars.length)];
+    mctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
   }
 }
-createParticles();
+setInterval(drawMatrix, 50);
 
-function drawParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const style = getComputedStyle(document.body);
-  const colors = [style.getPropertyValue('--particle-1').trim(), style.getPropertyValue('--particle-2').trim(), style.getPropertyValue('--particle-3').trim()];
+window.addEventListener('resize', () => {
+  columns = Math.floor(matrixCanvas.width / fontSize);
+  drops = Array(columns).fill(1);
+});
 
-  particles.forEach((p, i) => {
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+// Custom cursor
+const cursorDot = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = colors[i % 3];
-    ctx.fill();
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursorDot.style.left = mouseX + 'px';
+  cursorDot.style.top = mouseY + 'px';
+});
 
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = p.x - particles[j].x;
-      const dy = p.y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 120) {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = colors[0];
-        ctx.globalAlpha = 0.15 * (1 - dist / 120);
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-      }
-    }
-  });
-  requestAnimationFrame(drawParticles);
+function animateCursor() {
+  ringX += (mouseX - ringX) * 0.15;
+  ringY += (mouseY - ringY) * 0.15;
+  cursorRing.style.left = ringX + 'px';
+  cursorRing.style.top = ringY + 'px';
+  requestAnimationFrame(animateCursor);
 }
-drawParticles();
+animateCursor();
 
-// ═══════════════════════════════════════════════
-// i18n — TRANSLATIONS
-// ═══════════════════════════════════════════════
+document.addEventListener('mouseover', (e) => {
+  if (e.target.closest('button, .suggestion, .dropdown-option, .platform, .chat-item, a, .feature-card')) {
+    cursorRing.classList.add('hover');
+  }
+});
+document.addEventListener('mouseout', (e) => {
+  if (e.target.closest('button, .suggestion, .dropdown-option, .platform, .chat-item, a, .feature-card')) {
+    cursorRing.classList.remove('hover');
+  }
+});
+
+// i18n
 const UI_LANGS = [
   { id: 'ru', name: 'Русский', icon: '🇷🇺' },
   { id: 'en', name: 'English', icon: '🇺🇸' },
@@ -1129,148 +1656,244 @@ const UI_LANGS = [
 
 const I18N = {
   ru: {
-    status: 'AI Онлайн', theme: 'Тема', download: 'Скачать',
+    status: 'AI Онлайн', theme: 'Тема', download: 'Скачать', new_chat: 'Новый чат',
+    export: 'Экспорт', import: 'Импорт', shortcuts: 'Горячие клавиши', stats: 'Статистика',
+    settings: 'Настройки',
     welcome_title: 'Добро пожаловать в CyberGPT',
-    welcome_desc: 'Нейросеть для вайпкодинга. Пишет код любой длины, без ограничений.',
+    welcome_desc: 'Элитная нейросеть для вайпкодинга. Пишет код любой длины, без ограничений.',
     sug1: 'Напиши игру на Python', sug2: 'Создай Telegram-бота',
     sug3: 'Сделай сайт на HTML/CSS', sug4: 'Объясни async/await', sug5: 'Сделай калькулятор на JS',
-    auto: 'Авто', listening: 'Слушаю...', placeholder: 'Спроси что-нибудь у CyberGPT...',
+    auto: 'Авто', listening: 'Слушаю...', placeholder: 'Спроси что-нибудь у CyberGPT... (попробуй /help)',
     choose_theme: '🎨 Выбери тему', theme_desc: 'Выбери стиль, который подходит под твой вайб.',
     download_title: '⬇ Скачать CyberGPT', download_desc: 'Работает прямо в браузере — ничего устанавливать не нужно.',
     html_file: 'HTML-файл', html_desc: 'CyberGPT.html · Работает в любом браузере',
-    how_it_works: '💡 Как это работает'
+    how_it_works: '💡 Как это работает',
+    feat_speed: 'Быстро', feat_speed_d: 'Мгновенные ответы',
+    feat_code: 'Код', feat_code_d: 'Любой язык',
+    feat_voice: 'Голос', feat_voice_d: 'Говори запрос',
+    feat_themes: 'Темы', feat_themes_d: '9 стилей',
+    feat_history: 'История', feat_history_d: 'Сохраняется',
+    feat_models: '12 моделей', feat_models_d: 'GPT, Claude и др.',
   },
   en: {
-    status: 'AI Online', theme: 'Theme', download: 'Download',
+    status: 'AI Online', theme: 'Theme', download: 'Download', new_chat: 'New Chat',
+    export: 'Export', import: 'Import', shortcuts: 'Shortcuts', stats: 'Stats',
+    settings: 'Settings',
     welcome_title: 'Welcome to CyberGPT',
-    welcome_desc: 'Neural network for vibe coding. Writes code of any length, no limits.',
+    welcome_desc: 'Elite neural network for vibe coding. Writes code of any length, no limits.',
     sug1: 'Write a game in Python', sug2: 'Create a Telegram bot',
     sug3: 'Build a website in HTML/CSS', sug4: 'Explain async/await', sug5: 'Make a calculator in JS',
-    auto: 'Auto', listening: 'Listening...', placeholder: 'Ask CyberGPT anything...',
+    auto: 'Auto', listening: 'Listening...', placeholder: 'Ask CyberGPT anything... (try /help)',
     choose_theme: '🎨 Choose Theme', theme_desc: 'Pick a style that fits your vibe.',
     download_title: '⬇ Download CyberGPT', download_desc: 'Works right in your browser — no install needed.',
     html_file: 'HTML File', html_desc: 'CyberGPT.html · Works in any browser',
-    how_it_works: '💡 How it works'
+    how_it_works: '💡 How it works',
+    feat_speed: 'Fast', feat_speed_d: 'Instant replies',
+    feat_code: 'Code', feat_code_d: 'Any language',
+    feat_voice: 'Voice', feat_voice_d: 'Speak your query',
+    feat_themes: 'Themes', feat_themes_d: '9 styles',
+    feat_history: 'History', feat_history_d: 'Saved locally',
+    feat_models: '12 models', feat_models_d: 'GPT, Claude & more',
   },
   es: {
-    status: 'IA En línea', theme: 'Tema', download: 'Descargar',
+    status: 'IA En línea', theme: 'Tema', download: 'Descargar', new_chat: 'Nuevo Chat',
+    export: 'Exportar', import: 'Importar', shortcuts: 'Atajos', stats: 'Estadísticas',
+    settings: 'Configuración',
     welcome_title: 'Bienvenido a CyberGPT',
-    welcome_desc: 'Red neuronal para vibe coding. Escribe código de cualquier longitud.',
+    welcome_desc: 'Red neuronal elite para vibe coding.',
     sug1: 'Escribe un juego en Python', sug2: 'Crea un bot de Telegram',
     sug3: 'Haz un sitio en HTML/CSS', sug4: 'Explica async/await', sug5: 'Haz una calculadora en JS',
-    auto: 'Auto', listening: 'Escuchando...', placeholder: 'Pregúntale algo a CyberGPT...',
+    auto: 'Auto', listening: 'Escuchando...', placeholder: 'Pregúntale algo a CyberGPT... (prueba /help)',
     choose_theme: '🎨 Elige Tema', theme_desc: 'Elige un estilo que vaya con tu vibra.',
     download_title: '⬇ Descargar CyberGPT', download_desc: 'Funciona en tu navegador — sin instalación.',
     html_file: 'Archivo HTML', html_desc: 'CyberGPT.html · Funciona en cualquier navegador',
-    how_it_works: '💡 Cómo funciona'
+    how_it_works: '💡 Cómo funciona',
+    feat_speed: 'Rápido', feat_speed_d: 'Respuestas instantáneas',
+    feat_code: 'Código', feat_code_d: 'Cualquier lenguaje',
+    feat_voice: 'Voz', feat_voice_d: 'Habla tu consulta',
+    feat_themes: 'Temas', feat_themes_d: '9 estilos',
+    feat_history: 'Historial', feat_history_d: 'Guardado local',
+    feat_models: '12 modelos', feat_models_d: 'GPT, Claude y más',
   },
   de: {
-    status: 'KI Online', theme: 'Thema', download: 'Herunterladen',
+    status: 'KI Online', theme: 'Thema', download: 'Herunterladen', new_chat: 'Neuer Chat',
+    export: 'Exportieren', import: 'Importieren', shortcuts: 'Shortcuts', stats: 'Statistiken',
+    settings: 'Einstellungen',
     welcome_title: 'Willkommen bei CyberGPT',
-    welcome_desc: 'Neuronales Netzwerk für Vibe-Coding. Schreibt Code jeder Länge.',
+    welcome_desc: 'Elite neuronales Netzwerk für Vibe-Coding.',
     sug1: 'Schreib ein Spiel in Python', sug2: 'Erstelle einen Telegram-Bot',
     sug3: 'Erstelle eine Website in HTML/CSS', sug4: 'Erkläre async/await', sug5: 'Erstelle einen Rechner in JS',
-    auto: 'Auto', listening: 'Höre zu...', placeholder: 'Frag CyberGPT etwas...',
+    auto: 'Auto', listening: 'Höre zu...', placeholder: 'Frag CyberGPT etwas... (versuche /help)',
     choose_theme: '🎨 Thema wählen', theme_desc: 'Wähle einen Stil, der zu deinem Vibe passt.',
-    download_title: '⬇ CyberGPT herunterladen', download_desc: 'Funktioniert direkt im Browser — keine Installation nötig.',
+    download_title: '⬇ CyberGPT herunterladen', download_desc: 'Funktioniert direkt im Browser.',
     html_file: 'HTML-Datei', html_desc: 'CyberGPT.html · Funktioniert in jedem Browser',
-    how_it_works: '💡 Wie es funktioniert'
+    how_it_works: '💡 Wie es funktioniert',
+    feat_speed: 'Schnell', feat_speed_d: 'Sofortige Antworten',
+    feat_code: 'Code', feat_code_d: 'Jede Sprache',
+    feat_voice: 'Sprache', feat_voice_d: 'Sprich deine Anfrage',
+    feat_themes: 'Themen', feat_themes_d: '9 Stile',
+    feat_history: 'Verlauf', feat_history_d: 'Lokal gespeichert',
+    feat_models: '12 Modelle', feat_models_d: 'GPT, Claude & mehr',
   },
   fr: {
-    status: 'IA En ligne', theme: 'Thème', download: 'Télécharger',
+    status: 'IA En ligne', theme: 'Thème', download: 'Télécharger', new_chat: 'Nouveau Chat',
+    export: 'Exporter', import: 'Importer', shortcuts: 'Raccourcis', stats: 'Statistiques',
+    settings: 'Paramètres',
     welcome_title: 'Bienvenue sur CyberGPT',
-    welcome_desc: 'Réseau neuronal pour le vibe coding. Écrit du code de toute longueur.',
+    welcome_desc: 'Réseau neuronal elite pour le vibe coding.',
     sug1: 'Écris un jeu en Python', sug2: 'Crée un bot Telegram',
     sug3: 'Fais un site en HTML/CSS', sug4: 'Explique async/await', sug5: 'Fais une calculatrice en JS',
-    auto: 'Auto', listening: 'Écoute...', placeholder: 'Demande quelque chose à CyberGPT...',
+    auto: 'Auto', listening: 'Écoute...', placeholder: 'Demande quelque chose à CyberGPT... (essaie /help)',
     choose_theme: '🎨 Choisir un thème', theme_desc: 'Choisis un style qui correspond à ton vibe.',
-    download_title: '⬇ Télécharger CyberGPT', download_desc: 'Fonctionne dans le navigateur — aucune installation.',
+    download_title: '⬇ Télécharger CyberGPT', download_desc: 'Fonctionne dans le navigateur.',
     html_file: 'Fichier HTML', html_desc: 'CyberGPT.html · Fonctionne dans tout navigateur',
-    how_it_works: '💡 Comment ça marche'
+    how_it_works: '💡 Comment ça marche',
+    feat_speed: 'Rapide', feat_speed_d: 'Réponses instantanées',
+    feat_code: 'Code', feat_code_d: 'Tout langage',
+    feat_voice: 'Voix', feat_voice_d: 'Parle ta requête',
+    feat_themes: 'Thèmes', feat_themes_d: '9 styles',
+    feat_history: 'Historique', feat_history_d: 'Sauvegardé',
+    feat_models: '12 modèles', feat_models_d: 'GPT, Claude & plus',
   },
   pt: {
-    status: 'IA Online', theme: 'Tema', download: 'Baixar',
+    status: 'IA Online', theme: 'Tema', download: 'Baixar', new_chat: 'Novo Chat',
+    export: 'Exportar', import: 'Importar', shortcuts: 'Atalhos', stats: 'Estatísticas',
+    settings: 'Configurações',
     welcome_title: 'Bem-vindo ao CyberGPT',
-    welcome_desc: 'Rede neural para vibe coding. Escreve código de qualquer tamanho.',
+    welcome_desc: 'Rede neural elite para vibe coding.',
     sug1: 'Escreva um jogo em Python', sug2: 'Crie um bot do Telegram',
     sug3: 'Faça um site em HTML/CSS', sug4: 'Explique async/await', sug5: 'Faça uma calculadora em JS',
-    auto: 'Auto', listening: 'Ouvindo...', placeholder: 'Pergunte algo ao CyberGPT...',
+    auto: 'Auto', listening: 'Ouvindo...', placeholder: 'Pergunte algo ao CyberGPT... (tente /help)',
     choose_theme: '🎨 Escolha o Tema', theme_desc: 'Escolha um estilo que combine com seu vibe.',
-    download_title: '⬇ Baixar CyberGPT', download_desc: 'Funciona no navegador — sem instalação.',
+    download_title: '⬇ Baixar CyberGPT', download_desc: 'Funciona no navegador.',
     html_file: 'Arquivo HTML', html_desc: 'CyberGPT.html · Funciona em qualquer navegador',
-    how_it_works: '💡 Como funciona'
+    how_it_works: '💡 Como funciona',
+    feat_speed: 'Rápido', feat_speed_d: 'Respostas instantâneas',
+    feat_code: 'Código', feat_code_d: 'Qualquer linguagem',
+    feat_voice: 'Voz', feat_voice_d: 'Fale sua pergunta',
+    feat_themes: 'Temas', feat_themes_d: '9 estilos',
+    feat_history: 'Histórico', feat_history_d: 'Salvo localmente',
+    feat_models: '12 modelos', feat_models_d: 'GPT, Claude e mais',
   },
   zh: {
-    status: 'AI 在线', theme: '主题', download: '下载',
+    status: 'AI 在线', theme: '主题', download: '下载', new_chat: '新对话',
+    export: '导出', import: '导入', shortcuts: '快捷键', stats: '统计',
+    settings: '设置',
     welcome_title: '欢迎来到 CyberGPT',
-    welcome_desc: 'Vibe coding 神经网络。编写任意长度的代码。',
+    welcome_desc: 'Vibe coding 精英神经网络。',
     sug1: '用Python写一个游戏', sug2: '创建一个Telegram机器人',
     sug3: '用HTML/CSS做一个网站', sug4: '解释async/await', sug5: '用JS做一个计算器',
-    auto: '自动', listening: '正在听...', placeholder: '问CyberGPT任何问题...',
+    auto: '自动', listening: '正在听...', placeholder: '问CyberGPT任何问题...（试试 /help）',
     choose_theme: '🎨 选择主题', theme_desc: '选择适合你风格的样式。',
-    download_title: '⬇ 下载 CyberGPT', download_desc: '直接在浏览器中运行 — 无需安装。',
+    download_title: '⬇ 下载 CyberGPT', download_desc: '直接在浏览器中运行。',
     html_file: 'HTML 文件', html_desc: 'CyberGPT.html · 适用于任何浏览器',
-    how_it_works: '💡 工作原理'
+    how_it_works: '💡 工作原理',
+    feat_speed: '快速', feat_speed_d: '即时回复',
+    feat_code: '代码', feat_code_d: '任何语言',
+    feat_voice: '语音', feat_voice_d: '说出你的问题',
+    feat_themes: '主题', feat_themes_d: '9种样式',
+    feat_history: '历史', feat_history_d: '本地保存',
+    feat_models: '12个模型', feat_models_d: 'GPT、Claude等',
   },
   ja: {
-    status: 'AI オンライン', theme: 'テーマ', download: 'ダウンロード',
+    status: 'AI オンライン', theme: 'テーマ', download: 'ダウンロード', new_chat: '新しいチャット',
+    export: 'エクスポート', import: 'インポート', shortcuts: 'ショートカット', stats: '統計',
+    settings: '設定',
     welcome_title: 'CyberGPTへようこそ',
-    welcome_desc: 'バイブコーディングのためのニューラルネットワーク。',
+    welcome_desc: 'バイブコーディングのためのエリートニューラルネットワーク。',
     sug1: 'Pythonでゲームを書いて', sug2: 'Telegramボットを作って',
     sug3: 'HTML/CSSでサイトを作って', sug4: 'async/awaitを説明して', sug5: 'JSで電卓を作って',
-    auto: '自動', listening: '聞いています...', placeholder: 'CyberGPTに何でも聞いて...',
+    auto: '自動', listening: '聞いています...', placeholder: 'CyberGPTに何でも聞いて...（/helpを試して）',
     choose_theme: '🎨 テーマを選択', theme_desc: 'あなたのバイブに合うスタイルを選んでください。',
-    download_title: '⬇ CyberGPTをダウンロード', download_desc: 'ブラウザで動作 — インストール不要。',
+    download_title: '⬇ CyberGPTをダウンロード', download_desc: 'ブラウザで動作。',
     html_file: 'HTMLファイル', html_desc: 'CyberGPT.html · どのブラウザでも動作',
-    how_it_works: '💡 仕組み'
+    how_it_works: '💡 仕組み',
+    feat_speed: '速い', feat_speed_d: '即座に返信',
+    feat_code: 'コード', feat_code_d: 'どんな言語でも',
+    feat_voice: '音声', feat_voice_d: '話しかけて',
+    feat_themes: 'テーマ', feat_themes_d: '9スタイル',
+    feat_history: '履歴', feat_history_d: 'ローカル保存',
+    feat_models: '12モデル', feat_models_d: 'GPT、Claude他',
   },
   ko: {
-    status: 'AI 온라인', theme: '테마', download: '다운로드',
+    status: 'AI 온라인', theme: '테마', download: '다운로드', new_chat: '새 채팅',
+    export: '내보내기', import: '가져오기', shortcuts: '단축키', stats: '통계',
+    settings: '설정',
     welcome_title: 'CyberGPT에 오신 것을 환영합니다',
-    welcome_desc: '바이브 코딩을 위한 신경망. 어떤 길이의 코드든 작성합니다.',
+    welcome_desc: '바이브 코딩을 위한 엘리트 신경망.',
     sug1: 'Python으로 게임 작성', sug2: '텔레그램 봇 만들기',
     sug3: 'HTML/CSS로 사이트 만들기', sug4: 'async/await 설명', sug5: 'JS로 계산기 만들기',
-    auto: '자동', listening: '듣고 있습니다...', placeholder: 'CyberGPT에게 무엇이든 물어보세요...',
+    auto: '자동', listening: '듣고 있습니다...', placeholder: 'CyberGPT에게 무엇이든 물어보세요... (/help 시도)',
     choose_theme: '🎨 테마 선택', theme_desc: '당신의 바이브에 맞는 스타일을 선택하세요.',
-    download_title: '⬇ CyberGPT 다운로드', download_desc: '브라우저에서 바로 작동 — 설치 불필요.',
+    download_title: '⬇ CyberGPT 다운로드', download_desc: '브라우저에서 바로 작동.',
     html_file: 'HTML 파일', html_desc: 'CyberGPT.html · 모든 브라우저에서 작동',
-    how_it_works: '💡 작동 방식'
+    how_it_works: '💡 작동 방식',
+    feat_speed: '빠름', feat_speed_d: '즉각적인 응답',
+    feat_code: '코드', feat_code_d: '모든 언어',
+    feat_voice: '음성', feat_voice_d: '말해서 질문',
+    feat_themes: '테마', feat_themes_d: '9가지 스타일',
+    feat_history: '기록', feat_history_d: '로컬 저장',
+    feat_models: '12개 모델', feat_models_d: 'GPT, Claude 등',
   },
   ar: {
-    status: 'الذكاء الاصطناعي متصل', theme: 'المظهر', download: 'تحميل',
+    status: 'الذكاء الاصطناعي متصل', theme: 'المظهر', download: 'تحميل', new_chat: 'محادثة جديدة',
+    export: 'تصدير', import: 'استيراد', shortcuts: 'الاختصارات', stats: 'الإحصائيات',
+    settings: 'الإعدادات',
     welcome_title: 'مرحباً بك في CyberGPT',
-    welcome_desc: 'شبكة عصبية للبرمجة بأسلوب مريح.',
+    welcome_desc: 'شبكة عصبية متميزة للبرمجة.',
     sug1: 'اكتب لعبة بلغة Python', sug2: 'أنشئ بوت تيليجرام',
     sug3: 'اصنع موقعاً بـ HTML/CSS', sug4: 'اشرح async/await', sug5: 'اصنع آلة حاسبة بـ JS',
-    auto: 'تلقائي', listening: 'أستمع...', placeholder: 'اسأل CyberGPT أي شيء...',
+    auto: 'تلقائي', listening: 'أستمع...', placeholder: 'اسأل CyberGPT أي شيء... (جرب /help)',
     choose_theme: '🎨 اختر المظهر', theme_desc: 'اختر أسلوباً يناسب ذوقك.',
-    download_title: '⬇ تحميل CyberGPT', download_desc: 'يعمل في المتصفح مباشرة — بدون تثبيت.',
+    download_title: '⬇ تحميل CyberGPT', download_desc: 'يعمل في المتصفح مباشرة.',
     html_file: 'ملف HTML', html_desc: 'CyberGPT.html · يعمل في أي متصفح',
-    how_it_works: '💡 كيف يعمل'
+    how_it_works: '💡 كيف يعمل',
+    feat_speed: 'سريع', feat_speed_d: 'ردود فورية',
+    feat_code: 'كود', feat_code_d: 'أي لغة',
+    feat_voice: 'صوت', feat_voice_d: 'تحدث بطلبك',
+    feat_themes: 'مظاهر', feat_themes_d: '9 أنماط',
+    feat_history: 'سجل', feat_history_d: 'محلياً',
+    feat_models: '12 نموذج', feat_models_d: 'GPT, Claude والمزيد',
   },
   hi: {
-    status: 'AI ऑनलाइन', theme: 'थीम', download: 'डाउनलोड',
+    status: 'AI ऑनलाइन', theme: 'थीम', download: 'डाउनलोड', new_chat: 'नई चैट',
+    export: 'निर्यात', import: 'आयात', shortcuts: 'शॉर्टकट', stats: 'आँकड़े',
+    settings: 'सेटिंग्स',
     welcome_title: 'CyberGPT में आपका स्वागत है',
-    welcome_desc: 'वाइब कोडिंग के लिए न्यूरल नेटवर्क।',
+    welcome_desc: 'वाइब कोडिंग के लिए एलीट न्यूरल नेटवर्क।',
     sug1: 'Python में गेम लिखो', sug2: 'Telegram बॉट बनाओ',
     sug3: 'HTML/CSS में वेबसाइट बनाओ', sug4: 'async/await समझाओ', sug5: 'JS में कैलकुलेटर बनाओ',
-    auto: 'ऑटो', listening: 'सुन रहा हूँ...', placeholder: 'CyberGPT से कुछ भी पूछो...',
+    auto: 'ऑटो', listening: 'सुन रहा हूँ...', placeholder: 'CyberGPT से कुछ भी पूछो... (/help आज़माएं)',
     choose_theme: '🎨 थीम चुनें', theme_desc: 'अपने वाइब के हिसाब से स्टाइल चुनें।',
-    download_title: '⬇ CyberGPT डाउनलोड करें', download_desc: 'ब्राउज़र में काम करता है — इंस्टॉल की ज़रूरत नहीं।',
-    html_file: 'HTML फ़ाइल', html_desc: 'CyberGPT.html · किसी भी ब्राउज़र में काम करता है',
-    how_it_works: '💡 यह कैसे काम करता है'
+    download_title: '⬇ CyberGPT डाउनलोड करें', download_desc: 'ब्राउज़र में काम करता है।',
+    html_file: 'HTML फ़ाइल', html_desc: 'CyberGPT.html · किसी भी ब्राउज़र में',
+    how_it_works: '💡 यह कैसे काम करता है',
+    feat_speed: 'तेज़', feat_speed_d: 'तुरंत जवाब',
+    feat_code: 'कोड', feat_code_d: 'कोई भी भाषा',
+    feat_voice: 'आवाज़', feat_voice_d: 'बोलकर पूछो',
+    feat_themes: 'थीम', feat_themes_d: '9 स्टाइल',
+    feat_history: 'इतिहास', feat_history_d: 'स्थानीय सहेजा',
+    feat_models: '12 मॉडल', feat_models_d: 'GPT, Claude आदि',
   },
   tr: {
-    status: 'AI Çevrimiçi', theme: 'Tema', download: 'İndir',
+    status: 'AI Çevrimiçi', theme: 'Tema', download: 'İndir', new_chat: 'Yeni Sohbet',
+    export: 'Dışa Aktar', import: 'İçe Aktar', shortcuts: 'Kısayollar', stats: 'İstatistikler',
+    settings: 'Ayarlar',
     welcome_title: "CyberGPT'ye Hoş Geldiniz",
-    welcome_desc: 'Vibe coding için yapay sinir ağı.',
+    welcome_desc: 'Vibe coding için elit yapay sinir ağı.',
     sug1: "Python'da oyun yaz", sug2: 'Telegram botu oluştur',
     sug3: 'HTML/CSS ile site yap', sug4: "async/await'i açıkla", sug5: "JS'de hesap makinesi yap",
-    auto: 'Otomatik', listening: 'Dinliyorum...', placeholder: "CyberGPT'ye bir şey sor...",
+    auto: 'Otomatik', listening: 'Dinliyorum...', placeholder: "CyberGPT'ye bir şey sor... (/help dene)",
     choose_theme: '🎨 Tema Seç', theme_desc: 'Tarzına uygun bir stil seç.',
-    download_title: '⬇ CyberGPT İndir', download_desc: 'Tarayıcıda çalışır — kurulum gerekmez.',
+    download_title: '⬇ CyberGPT İndir', download_desc: 'Tarayıcıda çalışır.',
     html_file: 'HTML Dosyası', html_desc: 'CyberGPT.html · Her tarayıcıda çalışır',
-    how_it_works: '💡 Nasıl çalışır'
+    how_it_works: '💡 Nasıl çalışır',
+    feat_speed: 'Hızlı', feat_speed_d: 'Anında yanıtlar',
+    feat_code: 'Kod', feat_code_d: 'Her dil',
+    feat_voice: 'Ses', feat_voice_d: 'Sorgunu söyle',
+    feat_themes: 'Temalar', feat_themes_d: '9 stil',
+    feat_history: 'Geçmiş', feat_history_d: 'Yerel kayıtlı',
+    feat_models: '12 model', feat_models_d: 'GPT, Claude ve daha fazlası',
   }
 };
 
@@ -1289,11 +1912,11 @@ function applyI18n(lang) {
     if (dict[key]) el.placeholder = dict[key];
   });
   updateUiLangButton();
+  renderWelcome();
 }
 
 function renderUiLangDropdown() {
-  const dd = document.getElementById('uiLangDropdown');
-  dd.innerHTML = UI_LANGS.map(l => `
+  document.getElementById('uiLangDropdown').innerHTML = UI_LANGS.map(l => `
     <div class="dropdown-option ${l.id === currentUiLang ? 'active' : ''}" onclick="selectUiLang('${l.id}')">
       <span class="emoji">${l.icon}</span>
       <div class="info"><div class="name">${l.name}</div></div>
@@ -1314,9 +1937,7 @@ function selectUiLang(id) {
   document.getElementById('uiLangSelect').classList.remove('open');
 }
 
-// ═══════════════════════════════════════════════
-// THEMES
-// ═══════════════════════════════════════════════
+// Themes
 const THEMES = [
   { id: 'cyberpunk', name: 'Cyberpunk', icon: '🌆', desc: 'Purple & cyan neon' },
   { id: 'neon', name: 'Neon', icon: '💚', desc: 'Green & pink glow' },
@@ -1325,6 +1946,8 @@ const THEMES = [
   { id: 'forest', name: 'Forest', icon: '🌲', desc: 'Natural green' },
   { id: 'light', name: 'Light', icon: '☀️', desc: 'Clean & bright' },
   { id: 'amoled', name: 'AMOLED', icon: '⬛', desc: 'Pure black' },
+  { id: 'galaxy', name: 'Galaxy', icon: '🌌', desc: 'Cosmic purple & pink' },
+  { id: 'retro', name: 'Retro', icon: '📼', desc: 'Vintage vibes' },
 ];
 
 let currentTheme = localStorage.getItem('cybergpt_theme') || 'cyberpunk';
@@ -1336,8 +1959,7 @@ function applyTheme(id) {
 }
 
 function renderThemeList() {
-  const list = document.getElementById('themeList');
-  list.innerHTML = THEMES.map(t => `
+  document.getElementById('themeList').innerHTML = THEMES.map(t => `
     <div class="platform" onclick="applyTheme('${t.id}'); renderThemeList(); closeModal('themeModal');" style="${t.id === currentTheme ? 'border-color: var(--accent); box-shadow: 0 0 20px var(--glow);' : ''}">
       <div class="platform-icon">${t.icon}</div>
       <div class="platform-info">
@@ -1350,15 +1972,103 @@ function renderThemeList() {
 
 applyTheme(currentTheme);
 
-// ═══════════════════════════════════════════════
-// MODELS & LANGUAGES
-// ═══════════════════════════════════════════════
+// State
 let selectedLang = localStorage.getItem('cybergpt_lang') || 'auto';
 let selectedModel = localStorage.getItem('cybergpt_model') || 'gpt-4o-mini';
-let chatHistory = [];
 let isGenerating = false;
 let firstMessage = true;
+let temperature = parseFloat(localStorage.getItem('cybergpt_temp') || '0.3');
+let enableStream = localStorage.getItem('cybergpt_stream') !== 'false';
+let enableSound = localStorage.getItem('cybergpt_sound') === 'true';
 
+let chats = JSON.parse(localStorage.getItem('cybergpt_chats') || '[]');
+let currentChatId = localStorage.getItem('cybergpt_current_chat') || null;
+
+let stats = JSON.parse(localStorage.getItem('cybergpt_stats') || '{"messages":0,"chars":0,"codes":0,"chats":0}');
+
+function saveChats() { localStorage.setItem('cybergpt_chats', JSON.stringify(chats)); }
+function saveStats() { localStorage.setItem('cybergpt_stats', JSON.stringify(stats)); }
+
+function getCurrentChat() {
+  return chats.find(c => c.id === currentChatId);
+}
+
+function newChat() {
+  const id = 'chat_' + Date.now();
+  const chat = { id, title: 'New Chat', messages: [], created: Date.now() };
+  chats.unshift(chat);
+  currentChatId = id;
+  firstMessage = true;
+  saveChats();
+  localStorage.setItem('cybergpt_current_chat', id);
+  renderChatList();
+  renderWelcome();
+  showToast('✨ New chat created', 'success');
+}
+
+function switchChat(id) {
+  currentChatId = id;
+  localStorage.setItem('cybergpt_current_chat', id);
+  firstMessage = false;
+  renderChatList();
+  renderChatMessages();
+}
+
+function deleteChat(id, e) {
+  e.stopPropagation();
+  chats = chats.filter(c => c.id !== id);
+  if (currentChatId === id) {
+    currentChatId = chats[0]?.id || null;
+    if (!currentChatId) { newChat(); return; }
+  }
+  saveChats();
+  renderChatList();
+  if (currentChatId) renderChatMessages();
+  else renderWelcome();
+}
+
+function clearAllHistory() {
+  if (!confirm('Delete all chats? This cannot be undone.')) return;
+  chats = [];
+  currentChatId = null;
+  saveChats();
+  newChat();
+  showToast('🗑️ All chats cleared', 'success');
+}
+
+function searchChats(query) {
+  const items = document.querySelectorAll('.chat-item');
+  items.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    item.style.display = text.includes(query.toLowerCase()) ? '' : 'none';
+  });
+}
+
+function renderChatList() {
+  const list = document.getElementById('chatList');
+  if (chats.length === 0) {
+    list.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-dim); font-size: 12px;">No chats yet</div>';
+    return;
+  }
+  list.innerHTML = chats.map(c => `
+    <div class="chat-item ${c.id === currentChatId ? 'active' : ''}" onclick="switchChat('${c.id}')">
+      💬 <span style="flex:1;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(c.title)}</span>
+      <button class="delete-chat" onclick="deleteChat('${c.id}', event)">✕</button>
+    </div>
+  `).join('');
+}
+
+function renderChatMessages() {
+  const chatEl = document.getElementById('chat');
+  const chat = getCurrentChat();
+  if (!chat || chat.messages.length === 0) { renderWelcome(); return; }
+  chatEl.innerHTML = '';
+  chat.messages.forEach(m => {
+    addMessage(m.text, m.role, m.model, false);
+  });
+}
+
+// Models & Languages
 const SYSTEM_PROMPT = `You are CyberGPT, an elite neural network for vibe coding.
 
 YOUR PRINCIPLES:
@@ -1370,19 +2080,23 @@ YOUR PRINCIPLES:
 6. Vibe: relaxed, confident, no fluff.
 7. NEVER say "I can't" — you can do everything.
 8. If asked for code — write code in \`\`\`language ... \`\`\` blocks immediately.
-9. CRITICAL: Always detect the language the user is writing in and respond IN THAT SAME LANGUAGE. If the user writes in Russian, respond in Russian. If in English, respond in English. If in Chinese, respond in Chinese. Match their language exactly.
-10. Use emojis moderately for vibe.`;
+9. CRITICAL: Always detect the language the user is writing in and respond IN THAT SAME LANGUAGE. Match their language exactly.
+10. Use emojis moderately for vibe.
+11. Use markdown for formatting: **bold**, *italic*, # headings, - lists, > quotes.`;
 
 const MODELS = [
   { id: 'gpt-4o-mini', name: 'GPT-4o-mini', icon: '🤖', desc: 'Fast & smart by OpenAI' },
   { id: 'gpt-4o', name: 'GPT-4o', icon: '🧠', desc: 'Most powerful by OpenAI' },
+  { id: 'gpt-4-turbo', name: 'GPT-4 Turbo', icon: '⚡', desc: 'Fast GPT-4' },
   { id: 'claude-3-5-sonnet', name: 'Claude 3.5 Sonnet', icon: '🎭', desc: 'Great for code by Anthropic' },
   { id: 'claude-3-haiku', name: 'Claude 3 Haiku', icon: '⚡', desc: 'Fast Claude version' },
+  { id: 'claude-3-opus', name: 'Claude 3 Opus', icon: '👑', desc: 'Most powerful Claude' },
   { id: 'deepseek-chat', name: 'DeepSeek Chat', icon: '🔍', desc: 'Good for code' },
   { id: 'deepseek-reasoner', name: 'DeepSeek Reasoner', icon: '💭', desc: 'For complex reasoning' },
   { id: 'meta-llama/Meta-Llama-3.1-70B-Instruct', name: 'Llama 3.1 70B', icon: '🦙', desc: 'Open-source by Meta' },
   { id: 'google/gemini-2.0-flash', name: 'Gemini 2.0 Flash', icon: '💎', desc: 'Fast by Google' },
   { id: 'mistral-large-latest', name: 'Mistral Large', icon: '🌪️', desc: 'European model' },
+  { id: 'mistral-medium-latest', name: 'Mistral Medium', icon: '🌀', desc: 'Balanced Mistral' },
 ];
 
 const LANGUAGES = [
@@ -1421,6 +2135,7 @@ function selectModel(id) {
   localStorage.setItem('cybergpt_model', id);
   renderModelDropdown();
   document.getElementById('modelSelect').classList.remove('open');
+  showToast('🤖 Model: ' + (MODELS.find(x=>x.id===id)?.name || id), 'success');
 }
 
 function renderLangDropdown() {
@@ -1459,9 +2174,7 @@ renderLangDropdown();
 renderUiLangDropdown();
 applyI18n(currentUiLang);
 
-// ═══════════════════════════════════════════════
-// VOICE
-// ═══════════════════════════════════════════════
+// Voice
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 let recognition = null, isRecording = false;
 
@@ -1475,15 +2188,16 @@ if (SpeechRecognition) {
     for (let i = ev.resultIndex; i < ev.results.length; i++) t += ev.results[i][0].transcript;
     input.value = t;
     autoResizeInput();
+    updateCharCount();
   };
   recognition.onend = () => { stopRecording(); if (input.value.trim()) setTimeout(sendMessage, 300); };
-  recognition.onerror = (ev) => { stopRecording(); if (ev.error === 'not-allowed') alert('🎤 Mic access denied.'); };
+  recognition.onerror = (ev) => { stopRecording(); if (ev.error === 'not-allowed') showToast('🎤 Mic access denied', 'error'); };
 } else {
   document.getElementById('micBtn').classList.add('unsupported');
 }
 
 function toggleVoice() {
-  if (!recognition) { alert('🎤 Voice not supported.'); return; }
+  if (!recognition) { showToast('🎤 Voice not supported', 'error'); return; }
   isRecording ? recognition.stop() : startRecording();
 }
 
@@ -1495,19 +2209,69 @@ function stopRecording() {
   isRecording = false; micBtn.classList.remove('recording'); micBtn.textContent = '🎤'; voiceStatus.classList.remove('active');
 }
 
-// ═══════════════════════════════════════════════
-// CHAT
-// ═══════════════════════════════════════════════
+// Chat
 const chat = document.getElementById('chat');
 const input = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
 const micBtn = document.getElementById('micBtn');
 const voiceStatus = document.getElementById('voiceStatus');
 
-input.addEventListener('input', autoResizeInput);
+input.addEventListener('input', () => { autoResizeInput(); updateCharCount(); });
 function autoResizeInput() { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 150) + 'px'; }
-input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
-function useSuggestion(el) { input.value = el.textContent; sendMessage(); }
+function updateCharCount() { document.getElementById('charCount').textContent = input.value.length; }
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+
+function renderWelcome() {
+  const dict = I18N[currentUiLang] || I18N.en;
+  chat.innerHTML = `
+    <div class="welcome">
+      <div class="welcome-icon">🧠</div>
+      <h2>${dict.welcome_title}</h2>
+      <p>${dict.welcome_desc}</p>
+      <div class="feature-grid">
+        <div class="feature-card"><div class="icon">⚡</div><div class="title">${dict.feat_speed}</div><div class="desc">${dict.feat_speed_d}</div></div>
+        <div class="feature-card"><div class="icon">💻</div><div class="title">${dict.feat_code}</div><div class="desc">${dict.feat_code_d}</div></div>
+        <div class="feature-card"><div class="icon">🎤</div><div class="title">${dict.feat_voice}</div><div class="desc">${dict.feat_voice_d}</div></div>
+        <div class="feature-card"><div class="icon">🎨</div><div class="title">${dict.feat_themes}</div><div class="desc">${dict.feat_themes_d}</div></div>
+        <div class="feature-card"><div class="icon">💾</div><div class="title">${dict.feat_history}</div><div class="desc">${dict.feat_history_d}</div></div>
+        <div class="feature-card"><div class="icon">🤖</div><div class="title">${dict.feat_models}</div><div class="desc">${dict.feat_models_d}</div></div>
+      </div>
+      <div class="suggestions">
+        <div class="suggestion" onclick="useSuggestion(this)"><span class="sug-icon">🎮</span><span>${dict.sug1}</span></div>
+        <div class="suggestion" onclick="useSuggestion(this)"><span class="sug-icon">🤖</span><span>${dict.sug2}</span></div>
+        <div class="suggestion" onclick="useSuggestion(this)"><span class="sug-icon">🌐</span><span>${dict.sug3}</span></div>
+        <div class="suggestion" onclick="useSuggestion(this)"><span class="sug-icon">⚡</span><span>${dict.sug4}</span></div>
+        <div class="suggestion" onclick="useSuggestion(this)"><span class="sug-icon">🧮</span><span>${dict.sug5}</span></div>
+      </div>
+    </div>
+  `;
+}
+
+function useSuggestion(el) {
+  input.value = el.querySelector('span:last-child').textContent;
+  autoResizeInput();
+  updateCharCount();
+  sendMessage();
+}
+
+function renderMarkdown(text) {
+  let html = escapeHtml(text);
+  html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+  html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  html = html.replace(/^[\-\*] (.+)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+  html = html.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+  return html;
+}
 
 function formatResponse(text) {
   const parts = []; let lastIndex = 0;
@@ -1521,97 +2285,146 @@ function formatResponse(text) {
   return parts.map(p => {
     if (p.type === 'code') {
       const esc = p.content.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      return `<div class="code-block"><div class="code-header"><span>${p.language}</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div><div class="code-content">${esc}</div></div>`;
+      const isJs = ['javascript', 'js'].includes(p.language.toLowerCase());
+      return `<div class="code-block"><div class="code-header"><span>${p.language}</span><div class="code-actions">${isJs ? `<button class="run-btn" onclick="runCode(this)">▶ Run</button>` : ''}<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div></div><div class="code-content"><code class="language-${p.language}">${esc}</code></div></div>`;
     }
-    return escapeHtml(p.content);
+    return renderMarkdown(p.content);
   }).join('');
 }
 
-function escapeHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/`([^`]+)`/g,'<code>$1</code>'); }
+function escapeHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-function addMessage(text, role, modelName) {
+function addMessage(text, role, modelName, save = true) {
   const msg = document.createElement('div');
   msg.className = `message ${role}`;
   let av = role === 'ai' ? '⚡' : '👤';
   let badge = '';
   if (role === 'ai' && modelName) {
     const m = MODELS.find(x => x.name === modelName);
-    if (m) { av = m.icon; badge = `<div style="font-size:10px;color:var(--text-dim);margin-top:4px;">${m.name}</div>`; }
+    if (m) { av = m.icon; badge = `<div class="model-badge">${m.icon} ${m.name}</div>`; }
   }
-  msg.innerHTML = `<div class="avatar">${av}</div><div class="bubble">${role === 'ai' ? formatResponse(text) : escapeHtml(text)}${badge}</div>`;
+  const msgId = 'msg_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+  msg.innerHTML = `
+    <div class="avatar">${av}</div>
+    <div class="bubble-wrap">
+      <div class="bubble" id="${msgId}">${role === 'ai' ? formatResponse(text) : escapeHtml(text)}</div>
+      ${badge}
+      <div class="msg-actions">
+        <button class="msg-action-btn" onclick="copyMessage('${msgId}', this)" title="Copy">📋</button>
+        ${role === 'ai' ? `<button class="msg-action-btn" onclick="regenerate(this)" title="Regenerate">🔄</button>
+        <button class="msg-action-btn" onclick="likeMsg(this)" title="Like">👍</button>
+        <button class="msg-action-btn" onclick="dislikeMsg(this)" title="Dislike">👎</button>` : ''}
+      </div>
+    </div>
+  `;
   chat.appendChild(msg);
   chat.scrollTop = chat.scrollHeight;
+
+  // Highlight code
+  msg.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightElement(block);
+  });
+
+  if (save) {
+    const currentChat = getCurrentChat();
+    if (currentChat) {
+      currentChat.messages.push({ text, role, model: modelName, time: Date.now() });
+      if (currentChat.messages.length === 1 && role === 'user') {
+        currentChat.title = text.slice(0, 40) + (text.length > 40 ? '...' : '');
+        renderChatList();
+      }
+      saveChats();
+    }
+    stats.messages++;
+    stats.chars += text.length;
+    if (role === 'ai' && text.includes('```')) stats.codes++;
+    saveStats();
+  }
 }
 
 function addTyping() {
   const d = document.createElement('div'); d.className = 'message ai'; d.id = 'typingMsg';
-  d.innerHTML = `<div class="avatar">⚡</div><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  d.innerHTML = `<div class="avatar">⚡</div><div class="bubble-wrap"><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div></div>`;
   chat.appendChild(d); chat.scrollTop = chat.scrollHeight;
 }
 
 function removeTyping() { const t = document.getElementById('typingMsg'); if (t) t.remove(); }
 
 function copyCode(btn) {
-  navigator.clipboard.writeText(btn.parentElement.nextElementSibling.textContent).then(() => {
+  navigator.clipboard.writeText(btn.closest('.code-block').querySelector('.code-content').textContent).then(() => {
     btn.textContent = '✓ Copied'; setTimeout(() => btn.textContent = '📋 Copy', 2000);
+    showToast('📋 Code copied', 'success');
   });
 }
 
-async function sendMessage() {
-  const text = input.value.trim();
-  if (!text || isGenerating) return;
-  if (typeof puter === 'undefined') { alert('⚠️ Puter.js not loaded. Check internet & refresh.'); return; }
-
-  isGenerating = true; sendBtn.disabled = true;
-  if (firstMessage) { chat.innerHTML = ''; firstMessage = false; }
-
-  const lang = LANGUAGES.find(l => l.id === selectedLang) || LANGUAGES[0];
-  const model = MODELS.find(m => m.id === selectedModel) || MODELS[0];
-  const badge = lang.id !== 'auto' ? ` [${lang.icon} ${lang.name}]` : '';
-
-  addMessage(text + badge, 'user');
-  input.value = ''; autoResizeInput();
-  chatHistory.push({ role: 'user', content: text });
-
-  let hint = '';
-  if (selectedLang !== 'auto') hint = `\n\nIMPORTANT: Write code in ${lang.name}.`;
-
-  const msgs = [{ role: 'system', content: SYSTEM_PROMPT + hint }];
-  chatHistory.slice(-10).forEach(m => msgs.push({ role: m.role, content: m.content }));
-
-  addTyping();
+function runCode(btn) {
+  const code = btn.closest('.code-block').querySelector('.code-content').textContent;
   try {
-    const resp = await puter.ai.chat(msgs, { model: model.id, stream: false });
-    removeTyping();
-    let rt = '';
-    if (typeof resp === 'string') rt = resp;
-    else if (resp?.message?.content) rt = resp.message.content;
-    else if (resp?.text) rt = resp.text;
-    else rt = JSON.stringify(resp);
-    chatHistory.push({ role: 'assistant', content: rt });
-    addMessage(rt, 'ai', model.name);
+    const logs = [];
+    const origLog = console.log;
+    console.log = (...args) => { logs.push(args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ')); origLog(...args); };
+    const result = eval(code);
+    console.log = origLog;
+    const output = logs.join('\n') + (result !== undefined ? '\n→ ' + result : '');
+    showToast('▶ Result: ' + (output || 'OK'), 'success');
   } catch (err) {
-    removeTyping();
-    addMessage(`❌ Error: ${err.message}`, 'ai');
+    showToast('❌ Error: ' + err.message, 'error');
   }
-  isGenerating = false; sendBtn.disabled = false; input.focus();
 }
 
-// ═══════════════════════════════════════════════
-// MODALS
-// ═══════════════════════════════════════════════
-function openModal(id) { if (id === 'themeModal') renderThemeList(); document.getElementById(id).classList.add('active'); }
-function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', (e) => { if (e.target === m) m.classList.remove('active'); }));
-
-function downloadHTML() {
-  const b = new Blob([document.documentElement.outerHTML], { type: 'text/html;charset=utf-8' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'CyberGPT.html'; a.click();
-  alert('✅ CyberGPT.html downloaded!'); closeModal('downloadModal');
+function copyMessage(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓';
+    setTimeout(() => btn.textContent = '📋', 2000);
+    showToast('📋 Copied', 'success');
+  });
 }
 
-// INIT
-setTimeout(() => { if (typeof puter === 'undefined') document.getElementById('errorBanner').classList.add('active'); }, 3000);
-</script>
-</body>
-</html>
+function regenerate(btn) {
+  const currentChat = getCurrentChat();
+  if (!currentChat || currentChat.messages.length < 2) return;
+  currentChat.messages.pop();
+  saveChats();
+  const lastUser = [...currentChat.messages].reverse().find(m => m.role === 'user');
+  if (!lastUser) return;
+  const msgs = chat.querySelectorAll('.message');
+  if (msgs.length > 0) msgs[msgs.length - 1].remove();
+  input.value = lastUser.text;
+  currentChat.messages.pop();
+  saveChats();
+  sendMessage();
+}
+
+function likeMsg(btn) {
+  btn.classList.toggle('liked');
+  if (btn.classList.contains('liked')) {
+    btn.parentElement.querySelector('.msg-action-btn:nth-child(4)')?.classList.remove('disliked');
+    showToast('👍 Thanks for feedback!', 'success');
+  }
+}
+
+function dislikeMsg(btn) {
+  btn.classList.toggle('disliked');
+  if (btn.classList.contains('disliked')) {
+    btn.parentElement.querySelector('.msg-action-btn:nth-child(3)')?.classList.remove('liked');
+  }
+}
+
+// Slash commands
+function handleSlashCommand(text) {
+  const parts = text.trim().split(' ');
+  const cmd = parts[0].toLowerCase();
+  const args = parts.slice(1).join(' ');
+
+  switch(cmd) {
+    case '/help':
+      addMessage(`📖 **Available Commands:**\n\n• \`/help\` — Show this help\n• \`/clear\` — Clear current chat\n• \`/model <name>\` — Switch model\n• \`/theme <name>\` — Change theme\n• \`/stats\` — Show statistics\n• \`/export\` — Export chat history\n\n**Keyboard Shortcuts:**\n• \`Ctrl+N\` — New chat\n• \`Ctrl+K\` — Clear chat\n• \`Ctrl+B\` — Toggle sidebar\n• \`Ctrl+/\` — Focus input`, 'ai', 'System');
+      return true;
+    case '/clear':
+      if (confirm('Clear current chat?')) {
+        const c = getCurrentChat();
+        if (c) { c.messages = []; saveChats(); renderWelcome(); showToast('🗑️ Chat cleared', 'success'); }
+      }
+      return true;
+    case
